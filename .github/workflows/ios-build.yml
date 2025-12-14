@@ -42,3 +42,9 @@ jobs:
         with:
           name: ChargingAwake-unsigned-ipa
           path: ChargingAwake-unsigned.ipa
+      - name: Release unsigned IPA
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: unsigned-${{ github.run_id }}
+          name: Unsigned Build ${{ github.run_id }}
+          files: ChargingAwake-unsigned.ipa

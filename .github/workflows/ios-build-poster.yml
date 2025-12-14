@@ -38,3 +38,9 @@ jobs:
         with:
           name: PosterPlayer-unsigned-ipa
           path: PosterPlayer-unsigned.ipa
+      - name: Release unsigned IPA
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: unsigned-poster-${{ github.run_id }}
+          name: Poster Unsigned Build ${{ github.run_id }}
+          files: PosterPlayer-unsigned.ipa
