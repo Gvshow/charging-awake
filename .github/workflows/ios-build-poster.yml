@@ -1,6 +1,9 @@
 name: ios-build-poster-unsigned
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
