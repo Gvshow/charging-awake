@@ -1,0 +1,21 @@
+name: PosterPlayer
+options:
+  bundleIdPrefix: com.example
+settings:
+  IPHONEOS_DEPLOYMENT_TARGET: 15.0
+targets:
+  PosterPlayer:
+    type: application
+    platform: iOS
+    sources:
+      - Sources
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.example.posterplayer
+      CODE_SIGN_STYLE: Automatic
+      DEVELOPMENT_TEAM: ${DEVELOPMENT_TEAM}
+      SWIFT_VERSION: 5.9
+      ASSETCATALOG_COMPILER_APPICON_NAME: ""
+    info:
+      path: Sources/Info.plist
+    scheme:
+      name: PosterPlayer
