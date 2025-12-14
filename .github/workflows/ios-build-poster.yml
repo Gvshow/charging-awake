@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Install tools
@@ -41,6 +43,7 @@ jobs:
       - name: Release unsigned IPA
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: unsigned-poster-${{ github.run_id }}
-          name: Poster Unsigned Build ${{ github.run_id }}
+          tag_name: poster-unsigned-latest
+          name: Poster Unsigned Build (PosterPlayer)
           files: PosterPlayer-unsigned.ipa
+          overwrite: true
