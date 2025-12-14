@@ -24,6 +24,8 @@ struct PlayerView: View {
                     .foregroundColor(.white)
             }
         }
+        .ignoresSafeArea()
+        .statusBarHidden(true)
         .onAppear {
             if store.keepAwake { UIApplication.shared.isIdleTimerDisabled = true }
             startTimer()
