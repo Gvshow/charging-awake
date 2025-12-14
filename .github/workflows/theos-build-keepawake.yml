@@ -1,0 +1,28 @@
+name: theos-build-keepawake
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup theos
+        run: |
+          brew update
+          brew install ldid dpkg
+          git clone --recursive https://github.com/theos/theos.git $HOME/theos
+      - name: Build tweak
+        working-directory: KeepAwake
+        env:
+          THEOS: ${{ runner.home }}/theos
+        run: |
+          make package
+      - name: Upload deb artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: keepawake-deb
+          path: KeepAwake/packages/*.deb

@@ -1,0 +1,9 @@
+Package: com.example.keepawake
+Name: KeepAwake
+Version: 1.0
+Architecture: iphoneos-arm
+Description: Disable auto lock globally via SpringBoard
+Maintainer: You
+Author: You
+Section: Tweaks
+Depends: firmware (>= 14.0)
