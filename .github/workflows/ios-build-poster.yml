@@ -1,0 +1,37 @@
+name: ios-build-poster-unsigned
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install tools
+        run: |
+          brew update
+          brew install xcodegen
+      - name: Generate Xcode project
+        working-directory: PosterPlayer
+        run: xcodegen generate
+      - name: Build .app without code signing
+        working-directory: PosterPlayer
+        run: |
+          xcodebuild \
+            -project PosterPlayer.xcodeproj \
+            -scheme PosterPlayer \
+            -configuration Release \
+            -sdk iphoneos \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
+      - name: Package unsigned IPA
+        shell: bash
+        run: |
+          APP_PATH=$(find ~/Library/Developer/Xcode/DerivedData -type d -path "*Products/Release-iphoneos/PosterPlayer.app" -print 2>/dev/null | head -n1)
+          mkdir -p Payload
+          cp -R "$APP_PATH" Payload/
+          zip -r PosterPlayer-unsigned.ipa Payload
+      - name: Upload unsigned IPA artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PosterPlayer-unsigned-ipa
+          path: PosterPlayer-unsigned.ipa

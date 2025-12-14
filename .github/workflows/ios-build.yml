@@ -25,7 +25,7 @@ jobs:
             -scheme ChargingAwake \
             -configuration Release \
             -sdk iphoneos \
-            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build | xcpretty
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO build
       - name: Package unsigned IPA
         shell: bash
         run: |
