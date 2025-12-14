@@ -1,4 +1,4 @@
-import Foundation
+   import Foundation
 import UIKit
 
 struct PosterItem: Identifiable, Equatable {

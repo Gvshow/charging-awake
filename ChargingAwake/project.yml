@@ -1,4 +1,4 @@
-name: ChargingAwake
+  name: ChargingAwake
 options:
   bundleIdPrefix: com.example
 settings:
