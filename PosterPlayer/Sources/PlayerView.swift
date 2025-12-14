@@ -14,8 +14,10 @@ struct PlayerView: View {
                 if let data = try? Data(contentsOf: url), let img = UIImage(data: data) {
                     Image(uiImage: img)
                         .resizable()
-                        .scaledToFit()
+                        .scaledToFill()
+                        .ignoresSafeArea()
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                        .clipped()
                 }
             } else {
                 Text("未选择图片")
